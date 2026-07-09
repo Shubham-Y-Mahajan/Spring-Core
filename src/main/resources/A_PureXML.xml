@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Source of template = https://docs.spring.io/spring-framework/docs/4.2.x/spring-framework-reference/html/xsd-configuration.html-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- bean definitions here -->
+    <bean id="vehicle" class="com.shubham.spring.A_XMLConfig.Bike">
+        <constructor-arg name="tyre" ref ="tyre"> </constructor-arg> <!--Equivalent to calling Constructor-->
+        <property name="color" value="black"> </property> <!--Equivalent to calling Setter Method-->
+    </bean>
+    <!--
+    value is used for primitive values or Strings, not for other beans.
+    Since tyre is another Spring bean, you should use ref.
+    Spring effectively does:
+    Tyre tyre = context.getBean("tyre", Tyre.class);
+    bike.setTyre(tyre);
+    -->
+    <bean id="tyre" class="com.shubham.spring.A_XMLConfig.MRF">
+        <property name="life" value="5"> </property> <!--Equivalent to calling Setter Method-->
+    </bean>
+
+</beans>
